@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IApyme × Make Your Way — Seoul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ee;
+    --off-white: #ede9e0;
+    --accent: #c8402a;
+    --accent-light: #f2e8e5;
+    --muted: #6b6560;
+    --border: rgba(10,10,10,0.12);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'Space Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(245,243,238,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-brand {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 2.5rem 5rem;
+    border-bottom: 0.5px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--off-white);
+    z-index: 0;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .hero-kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-kicker::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--muted);
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+    max-width: 900px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-x {
+    color: var(--muted);
+    font-style: normal;
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .hero-desc {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 420px;
+    line-height: 1.55;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+  }
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+  }
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.75rem;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.75rem;
+    background: transparent;
+    color: var(--black);
+    border: 0.5px solid var(--black);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--off-white); }
+
+  /* SECTION WRAPPER */
+  section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2.5rem;
+  }
+  section + section {
+    border-top: 0.5px solid var(--border);
+  }
+  .section-full {
+    width: 100%;
+    border-top: 0.5px solid var(--border);
+    padding: 6rem 2.5rem;
+  }
+  .section-full-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .section-label .num {
+    color: var(--accent);
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+  h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  p {
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  /* ── NEW: THEORETICAL BACKGROUND SECTION ── */
+  .theory-section {
+    background: var(--off-white);
+  }
+  .theory-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .theory-left { }
+  .theory-intro {
+    font-size: 18px;
+    color: var(--black);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .theory-intro strong {
+    font-weight: 500;
+    color: var(--black);
+  }
+  .source-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 0.5px solid var(--accent);
+    padding: 0.3rem 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .source-badge::before {
+    content: '↗';
+    font-size: 12px;
+  }
+  .theory-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .theory-card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    padding: 1.75rem;
+    position: relative;
+  }
+  .theory-card::before {
+    content: attr(data-phase);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .theory-card h4 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+  .theory-card p {
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .theory-card .ai-augment {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 0.5px solid var(--border);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+  }
+  .theory-quote {
+    border-left: 2px solid var(--accent);
+    padding: 1.5rem 2rem;
+    background: var(--white);
+    margin: 2.5rem 0;
+  }
+  .theory-quote blockquote {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    line-height: 1.45;
+    color: var(--black);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+  .theory-quote cite {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+  .phase-flow {
+    display: flex;
+    gap: 0;
+    margin: 3rem 0 2rem;
+    overflow-x: auto;
+  }
+  .phase-item {
+    flex: 1;
+    min-width: 120px;
+    padding: 1.25rem 1rem;
+    border: 0.5px solid var(--border);
+    border-right: none;
+    text-align: center;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .phase-item:last-child { border-right: 0.5px solid var(--border); }
+  .phase-item:hover { background: var(--off-white); }
+  .phase-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+  .phase-name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.2;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .phase-sub {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+  }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .benefit-card {
+    padding: 1.5rem;
+    border: 0.5px solid var(--border);
+  }
+  .benefit-num {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.75rem;
+    opacity: 0.3;
+    line-height: 1;
+  }
+  .benefit-card h5 {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--black);
+  }
+  .benefit-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* TEAM */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 2rem;
+  }
+  .team-card {
+    padding: 2rem 1.75rem;
+    background: var(--off-white);
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .team-card:hover { background: var(--white); }
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+  }
+  .avatar.myw { background: var(--accent); }
+  .team-org {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .team-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+  .team-role {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  .team-desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* MODULES */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 1rem;
+  }
+  .module-track h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .module-item {
+    padding: 1.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .module-duration {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+  }
+  .module-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .module-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border: 0.5px solid var(--border);
+    color: var(--muted);
+  }
+
+  /* FORMATS */
+  .formats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 2rem;
+  }
+  .format-card {
+    padding: 2.5rem 2rem;
+    background: var(--off-white);
+    position: relative;
+  }
+  .format-card.featured {
+    background: var(--black);
+    color: var(--white);
+  }
+  .format-card.featured p { color: rgba(245,243,238,0.6); }
+  .format-card.featured .format-duration { color: var(--accent); }
+  .format-rec {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--white);
+    padding: 0.25rem 0.65rem;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+  }
+  .format-duration {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  /* METHODOLOGY */
+  .method-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .method-phases {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .method-phase {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+    align-items: flex-start;
+  }
+  .method-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    min-width: 2rem;
+    padding-top: 3px;
+  }
+  .method-desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 0.35rem;
+    margin-bottom: 0;
+  }
+  .method-layers {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .layer-card {
+    padding: 1.75rem;
+    border: 0.5px solid var(--border);
+  }
+  .layer-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  /* AVAILABILITY */
+  .weeks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 2rem;
+  }
+  .week {
+    padding: 2rem 1.5rem;
+    background: var(--off-white);
+  }
+  .week.highlight { background: var(--black); color: var(--white); }
+  .week.highlight p { color: rgba(245,243,238,0.55); }
+  .week-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .week-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .week p { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
+
+  /* PARTNERS */
+  .partners-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+  .partner-group h4 {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .partner-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .partner-list li {
+    font-size: 14px;
+    color: var(--black);
+    padding: 0.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+    line-height: 1.3;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+  }
+  .cta-section h2 { color: var(--white); }
+  .cta-section p { color: rgba(245,243,238,0.55); }
+  .cta-email {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(245,243,238,0.4);
+    margin-top: 2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-title { font-size: clamp(2.8rem, 7vw, 5rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    .weeks { grid-template-columns: repeat(2, 1fr); }
+    .partners-cols { grid-template-columns: repeat(2, 1fr); }
+    .theory-grid { gap: 2.5rem; }
+    .method-layout { gap: 3rem; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0.85rem 1.25rem; }
+    .nav-brand { font-size: 9px; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .nav-links { display: none; }
+
+    .hero { padding: 5rem 1.25rem 3.5rem; min-height: auto; }
+    .hero::before { display: none; }
+    .hero-title { font-size: clamp(2.6rem, 13vw, 4rem); }
+    .hero-meta { flex-direction: column; gap: 1.5rem; }
+    .hero-desc { font-size: 16px; max-width: 100%; }
+    .hero-stats { gap: 1.5rem; }
+    .stat-num { font-size: 2rem; }
+    .hero-cta { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+    .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+
+    section { padding: 3rem 1.25rem; }
+    .section-full { padding: 3rem 1.25rem; }
+
+    h2 { font-size: clamp(1.8rem, 8vw, 2.6rem); margin-bottom: 2rem; }
+    h3 { font-size: 1.2rem; }
+
+    .theory-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .theory-intro { font-size: 16px; }
+    .theory-quote blockquote { font-size: 1.1rem; }
+    .phase-item { min-width: 72px; padding: 0.85rem 0.5rem; }
+    .phase-name { font-size: 0.8rem; }
+    .phase-sub { display: none; }
+    .benefits-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+    .team-grid { grid-template-columns: 1fr; gap: 2px; }
+    .two-col-grid { grid-template-columns: 1fr !important; }
+    .why-grid { grid-template-columns: 1fr !important; }
+    .compound-card { grid-template-columns: 1fr !important; gap: 1.5rem !important; padding: 2rem 1.5rem !important; }
+    .modules-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .method-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .formats-grid { grid-template-columns: 1fr; gap: 2px; }
+    .weeks { grid-template-columns: 1fr; gap: 2px; }
+    .partners-cols { grid-template-columns: 1fr; gap: 2rem; }
+
+    .cta-email { font-size: 10px; word-break: break-all; }
+
+    footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem 1.25rem; }
+  }
+
+  @media (max-width: 400px) {
+    .hero-title { font-size: 2.3rem; }
+    .stat-num { font-size: 1.75rem; }
+    h2 { font-size: 1.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">IApyme × Make Your Way — Seoul 2026</span>
+  <ul class="nav-links">
+    <li><a href="#background">Context</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#modules">Programme</a></li>
+    <li><a href="#methodology">Method</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-kicker">Joint Training Proposal · Seoul, March 2026</div>
+    <h1 class="hero-title">
+      IApyme<br>
+      <span class="hero-x">×</span><br>
+      <em>Make Your Way</em>
+    </h1>
+    <div class="hero-meta">
+      <p class="hero-desc">AI acceleration meets structured innovation methodology. A joint training programme for international startup hubs in Seoul — practical, proven, ready to deploy.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">100+</span>
+          <span class="stat-label">Companies</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">300+</span>
+          <span class="stat-label">Participants</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">15+</span>
+          <span class="stat-label">Institutions</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#background" class="btn-primary">Explore the proposal</a>
+      <a href="#cta" class="btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── THEORETICAL BACKGROUND (NEW SECTION) ── -->
+<div class="section-full theory-section" id="background">
+  <div class="section-full-inner">
+    <div class="section-label"><span class="num">00</span> — The Case for This</div>
+    <h2>Why AI and Design Thinking <em>belong together.</em></h2>
+
+    <div class="theory-grid">
+      <div class="theory-left">
+        <a href="https://www.ideou.com/blogs/inspiration/ai-and-design-thinking" target="_blank" class="source-badge">Reference: IDEO U — AI & Design Thinking</a>
+        <p class="theory-intro">
+          The combination of Artificial Intelligence and Design Thinking has the potential to <strong>revolutionize the way we solve problems and innovate.</strong> Design thinking's human-centered approach focuses on understanding real needs — while AI brings data analysis, machine learning, and automation. By integrating both, we harness the best of both worlds.
+        </p>
+        <p class="theory-intro">
+          This is precisely the hypothesis behind IApyme × Make Your Way. We don't teach AI tools as a standalone subject. We don't teach Design Thinking in isolation either. <strong>We augment every phase of the innovation process with the AI capabilities that accelerate it most.</strong>
+        </p>
+
+        <div class="theory-quote">
+          <blockquote>"AI is your creative assistant, not your replacement. The magic happens when human intuition meets machine efficiency."</blockquote>
+          <cite>— IDEO U Team</cite>
+        </div>
+
+        <p class="theory-intro">
+          Research from IDEO U confirms what we've observed across 100+ companies: AI doesn't change the fundamental principle of putting people first. Instead, it provides powerful tools to <strong>gather insights faster, generate diverse solutions more quickly, and predict outcomes with greater accuracy.</strong>
+        </p>
+      </div>
+
+      <div class="theory-right">
+        <div class="theory-card" data-phase="DT Phase 01 + AI">
+          <h4>Empathy — amplified by AI</h4>
+          <p>Understanding users at scale. Sentiment analysis of reviews, behavioral pattern recognition, AI-driven survey synthesis — revealing insights that manual interviews alone would miss.</p>
+          <div class="ai-augment">↳ Tools: Perplexity, ChatGPT for research synthesis, AI sentiment tools</div>
+        </div>
+        <div class="theory-card" data-phase="DT Phase 02 + AI">
+          <h4>Define — crystallizing the right problem</h4>
+          <p>Data visualization to transform complex datasets into actionable clarity. Predictive analytics to anticipate future trends. AI helps us make sense of what we've gathered — but human judgment frames the right problem statement.</p>
+          <div class="ai-augment">↳ Tools: Notion AI, visualization tools, structured frameworks</div>
+        </div>
+        <div class="theory-card" data-phase="DT Phase 03 + AI">
+          <h4>Ideation & Prototyping — creativity on steroids</h4>
+          <p>AI-assisted brainstorming breaks creative blocks and expands directions the team hasn't considered. Generative design tools produce multiple prototype variations in the time it would take to sketch one. IDEO used this to create 50 chair designs in the time it usually takes to sketch five.</p>
+          <div class="ai-augment">↳ Tools: v0, Cursor, Replit, COCD Box + AI prompt generation</div>
+        </div>
+        <div class="theory-card" data-phase="DT Phase 04 + AI">
+          <h4>Test & Validate — feedback at warp speed</h4>
+          <p>Automated testing simulates user interactions before you reach real users. Real-time analytics during live tests provide instant behavioral insights. AI turns iteration from a multi-week cycle into a near-real-time process.</p>
+          <div class="ai-augment">↳ Tools: AI landing pages, fake-door tests, AI survey analysis</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase flow bar -->
+    <div class="phase-flow">
+      <div class="phase-item">
+        <span class="phase-num">01</span>
+        <span class="phase-name">Identify Challenge</span>
+        <span class="phase-sub">Research context</span>
+      </div>
+      <div class="phase-item">
+        <span class="phase-num">02</span>
+        <span class="phase-name">Research & Define</span>
+        <span class="phase-sub">User analysis</span>
+      </div>
+      <div class="phase-item">
+        <span class="phase-num">03</span>
+        <span class="phase-name">Ideate & Prototype</span>
+        <span class="phase-sub">Structured creation</span>
+      </div>
+      <div class="phase-item">
+        <span class="phase-num">04</span>
+        <span class="phase-name">Validate & Pitch</span>
+        <span class="phase-sub">Evidence-based</span>
+      </div>
+    </div>
+
+    <!-- Benefits from IDEO U research -->
+    <h3 style="font-family: var(--serif); font-size: 1.6rem; margin-bottom: 0.5rem;">What the research shows.</h3>
+    <p style="color: var(--muted); max-width: 560px;">Four documented benefits of integrating AI with Design Thinking, validated across hundreds of innovation programmes globally.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <span class="benefit-num">01</span>
+        <h5>Enhanced creativity</h5>
+        <p>AI breaks cognitive biases and expands creative horizons by suggesting unconventional solutions based on historical data. Generative tools explore a wider range of design possibilities than any team could reach alone.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-num">02</span>
+        <h5>Improved efficiency</h5>
+        <p>AI automates repetitive tasks and accelerates the design cycle — streamlining data collection, enabling rapid prototyping, and allowing teams to iterate more quickly. Founders ship faster.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-num">03</span>
+        <h5>Deeper user insights</h5>
+        <p>Predictive analytics forecast user needs and trends. Sentiment analysis interprets feedback more accurately. More informed design decisions, more user-centric solutions — in less time.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-num">04</span>
+        <h5>Greater accuracy</h5>
+        <p>AI provides real-time feedback and performance metrics during iterative testing. Automated tools simulate diverse user scenarios. The final solution is both effective and genuinely user-friendly.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-num">05</span>
+        <h5>Human judgment remains central</h5>
+        <p>AI can crunch numbers and spot patterns, but it cannot empathize or think creatively like humans can. The methodology keeps human intuition at the center — AI amplifies, not replaces.</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-num">06</span>
+        <h5>Democratized innovation</h5>
+        <p>AI lowers the technical barrier to innovation, making Design Thinking accessible to non-technical founders. Vibe coding, AI-assisted research, and automated prototyping put powerful tools in every founder's hands.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO WE ARE -->
+<section id="team">
+  <div class="section-label"><span class="num">01</span> — Who We Are</div>
+  <h2>Two teams, one mission: <em>accelerate founders.</em></h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;" class="two-col-grid">
+    <div>
+      <h3 style="margin-bottom: 0.75rem;">IApyme Consultores</h3>
+      <p>AI and innovation consulting firm for SMEs and startups, co-founded at Mondragon University's LEINN programme — one of Europe's leading entrepreneurship degrees. Specialising in practical AI adoption: tool implementation, process automation, and founder training. Over 100 companies served across Spain with 100% client satisfaction.</p>
+    </div>
+    <div>
+      <h3 style="margin-bottom: 0.75rem;">Make Your Way</h3>
+      <p>Powered by Rivia Education Holding, delivers Design Thinking programmes that develop soft skills critical for the modern business market. Validated across 4 countries, 3 continents, 15+ educational institutions and 300+ participants. Their methodology has produced 40+ prototypes addressing real-world challenges.</p>
+    </div>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="avatar">IG</div>
+      <div class="team-org">IApyme Consultores</div>
+      <div class="team-name">Iker Garcia</div>
+      <div class="team-role">CEO & Co-founder</div>
+      <p class="team-desc">Strategy, client relationships, and AI programme design. Third-year LEINN student at Mondragon University. Has led AI training and onboarding across 100+ companies in Spain.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar">OP</div>
+      <div class="team-org">IApyme Consultores</div>
+      <div class="team-name">Oier Perez</div>
+      <div class="team-role">CTO & Co-founder</div>
+      <p class="team-desc">Technical implementation, tooling, and systems architecture. Co-architect of IApyme's consulting methodology. Bridges deep technical knowledge with accessible business outcomes.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar myw">IA</div>
+      <div class="team-org">Make Your Way</div>
+      <div class="team-name">Irati Amondarain</div>
+      <div class="team-role">Programme Lead</div>
+      <p class="team-desc">Designs and facilitates Design Thinking workshops across international settings. Experienced in adapting innovation methodology to diverse cultural and educational contexts.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar myw">EC</div>
+      <div class="team-org">Make Your Way</div>
+      <div class="team-name">Elisa Cano</div>
+      <div class="team-role">Innovation Facilitator</div>
+      <p class="team-desc">Leads ideation and prototyping sessions. Specialises in structured brainstorming frameworks and translating early-stage ideas into testable concepts with business viability.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar myw">LE</div>
+      <div class="team-org">Make Your Way</div>
+      <div class="team-name">Leire Eiguren</div>
+      <div class="team-role">User Research & Validation</div>
+      <p class="team-desc">Expert in user research, buyer persona development, and validation methodologies. Ensures every prototype is grounded in real user needs before committing resources.</p>
+    </div>
+    <div class="team-card">
+      <div class="avatar myw">PG</div>
+      <div class="team-org">Make Your Way</div>
+      <div class="team-name">Paula Goitia</div>
+      <div class="team-role">Pitch & Communication Coach</div>
+      <p class="team-desc">Coaches founders on pitch structure, storytelling, and presentation delivery. Prepares teams to communicate ideas with clarity and conviction to investors and partners.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS WORKS -->
+<section>
+  <div class="section-label"><span class="num">02</span> — Why This Works</div>
+  <h2>The right offer at the <em>right moment.</em></h2>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;" class="why-grid">
+    <div style="padding: 2rem; background: var(--off-white);">
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); margin-bottom: 0.75rem;">01</div>
+      <h3 style="font-size: 1.1rem; margin-bottom: 0.6rem;">Founders learn by doing</h3>
+      <p style="font-size: 13px; color: var(--muted); margin: 0;">Our training is built for people shipping product — fast, practical, immediately applicable. Across 10+ workshops and hackathons on three continents, we've refined what works.</p>
+    </div>
+    <div style="padding: 2rem; background: var(--off-white);">
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); margin-bottom: 0.75rem;">02</div>
+      <h3 style="font-size: 1.1rem; margin-bottom: 0.6rem;">AI moves too fast to ignore</h3>
+      <p style="font-size: 13px; color: var(--muted); margin: 0;">Vibe coding, autonomous agents, AI-assisted operations — all available today. Your startups can ship significantly faster if they understand how to use what already exists.</p>
+    </div>
+    <div style="padding: 2rem; background: var(--off-white);">
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); margin-bottom: 0.75rem;">03</div>
+      <h3 style="font-size: 1.1rem; margin-bottom: 0.6rem;">Innovation needs structure</h3>
+      <p style="font-size: 13px; color: var(--muted); margin: 0;">Ideas without methodology die. Our Double Diamond framework, supported by proprietary templates, turns ambiguity into validated, investable solutions. IDEO's research confirms: structure is what makes creativity stick.</p>
+    </div>
+    <div style="padding: 2rem; background: var(--off-white);">
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); margin-bottom: 0.75rem;">04</div>
+      <h3 style="font-size: 1.1rem; margin-bottom: 0.6rem;">We're here — not remote</h3>
+      <p style="font-size: 13px; color: var(--muted); margin: 0;">Physical presence matters. Workshops, office hours, spontaneous conversations in the hub. In-person intensity, not a webinar. Available until April 17th.</p>
+    </div>
+    <div style="padding: 2rem; background: var(--off-white);">
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); margin-bottom: 0.75rem;">05</div>
+      <h3 style="font-size: 1.1rem; margin-bottom: 0.6rem;">Proven across continents</h3>
+      <p style="font-size: 13px; color: var(--muted); margin: 0;">From Bilbao to Brooklyn, Pune to Seoul — our methodologies have been validated with 300+ participants, 40+ prototypes, and partnerships with 15+ educational institutions.</p>
+    </div>
+  </div>
+
+  <!-- FEATURED: Compound value -->
+  <div style="margin-top: 2px; padding: 3rem 2.5rem; background: var(--black); color: var(--white); display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center;" class="compound-card">
+    <div>
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 1rem;">06 — The hidden benefit</div>
+      <h3 style="font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.1; color: var(--white);">Compound value <em style="color: var(--accent);">for your hub.</em></h3>
+    </div>
+    <div>
+      <p style="font-size: 16px; color: rgba(245,243,238,0.75); line-height: 1.7; margin-bottom: 1.5rem;">Most training programmes add value to individual founders. Ours adds value to the hub itself. Our sessions have consistently <strong style="color: var(--white); font-weight: 500;">increased the sense of community</strong> within the hubs we've worked with — founders start collaborating across teams, sharing tools, and sustaining the energy long after the sessions end.</p>
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+        <div>
+          <div style="font-family: var(--serif); font-size: 2rem; color: var(--white); line-height: 1;">↑</div>
+          <div style="font-family: var(--mono); font-size: 10px; color: rgba(245,243,238,0.45); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.4rem;">Community sentiment</div>
+        </div>
+        <div>
+          <div style="font-family: var(--serif); font-size: 2rem; color: var(--white); line-height: 1;">↑</div>
+          <div style="font-family: var(--mono); font-size: 10px; color: rgba(245,243,238,0.45); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.4rem;">Cross-team collaboration</div>
+        </div>
+        <div>
+          <div style="font-family: var(--serif); font-size: 2rem; color: var(--white); line-height: 1;">↑</div>
+          <div style="font-family: var(--mono); font-size: 10px; color: rgba(245,243,238,0.45); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.4rem;">Programme differentiation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING MODULES -->
+<section id="modules">
+  <div class="section-label"><span class="num">03</span> — Training Modules</div>
+  <h2>What we <em>teach.</em></h2>
+  <div class="modules-grid">
+    <div class="module-track">
+      <h3>AI Acceleration — by IApyme Consultores</h3>
+      <div class="module-item">
+        <div class="module-duration">2 h</div>
+        <div class="module-title">AI Onboarding for Startups</div>
+        <p class="module-desc">From zero to operational. Hands-on session covering the current AI tool landscape, practical selection criteria for early-stage startups, and a live workflow build.</p>
+        <div class="tags"><span class="tag">ChatGPT</span><span class="tag">Perplexity</span><span class="tag">Workflow Automation</span></div>
+      </div>
+      <div class="module-item">
+        <div class="module-duration">2 h</div>
+        <div class="module-title">Vibe Coding: Ship Faster with AI</div>
+        <p class="module-desc">AI-assisted development for non-technical founders. Prompt-to-product thinking and tools to move from concept to functional MVP in a single session.</p>
+        <div class="tags"><span class="tag">Cursor</span><span class="tag">Claude Code</span><span class="tag">MVP Development</span></div>
+      </div>
+
+      <div class="module-item">
+        <div class="module-duration">2 h</div>
+        <div class="module-title">AI Content & Go-to-Market</div>
+        <p class="module-desc">Building an AI-powered content engine for faster launches. From landing pages to social strategy and automated email flows — practical outputs, not theory.</p>
+        <div class="tags"><span class="tag">Content Strategy</span><span class="tag">Landing Pages</span></div>
+      </div>
+    </div>
+    <div class="module-track">
+      <h3>Innovation & Design — by Make Your Way</h3>
+      <div class="module-item">
+        <div class="module-duration">2 h</div>
+        <div class="module-title">Problem Discovery & User Research</div>
+        <p class="module-desc">Identifying genuine challenges worth solving. Buyer Persona methodology, context analysis, and needs mapping. Every programme starts here — the foundation for everything that follows.</p>
+        <div class="tags"><span class="tag">Design Thinking</span><span class="tag">Buyer Persona</span><span class="tag">Context Analysis</span></div>
+      </div>
+      <div class="module-item">
+        <div class="module-duration">2 h</div>
+        <div class="module-title">Structured Ideation</div>
+        <p class="module-desc">Generating solutions through structured brainstorming and COCD Box frameworks. Prioritisation by impact versus effort. Defining a clear value proposition with business rationale.</p>
+        <div class="tags"><span class="tag">Brainstorming</span><span class="tag">COCD Box</span><span class="tag">Impact Mapping</span></div>
+      </div>
+      <div class="module-item">
+        <div class="module-duration">2 h</div>
+        <div class="module-title">Rapid Prototyping & Validation</div>
+        <p class="module-desc">Building quick prototypes and validating assumptions with evidence. Converting intuition into data before committing resources. AI tools accelerate every step.</p>
+        <div class="tags"><span class="tag">Prototyping</span><span class="tag">Fake Door Tests</span><span class="tag">Survey Design</span></div>
+      </div>
+      <div class="module-item">
+        <div class="module-duration">2 h</div>
+        <div class="module-title">Pitch Preparation & Storytelling</div>
+        <p class="module-desc">Structuring compelling pitches with narrative techniques. Four-minute presentations with expert feedback. Participants leave ready to present to investors with confidence.</p>
+        <div class="tags"><span class="tag">Pitch Structure</span><span class="tag">Storytelling</span><span class="tag">Live Feedback</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology">
+  <div class="section-label"><span class="num">04</span> — Methodology</div>
+  <h2>Double Diamond <em>enhanced with AI.</em></h2>
+  <div class="method-layout">
+    <div class="method-phases">
+      <div class="method-phase">
+        <span class="method-num">01 →</span>
+        <div>
+          <h3 style="font-size: 1.1rem;">Identify Challenge</h3>
+          <p class="method-desc">Research context, define the problem worth solving</p>
+        </div>
+      </div>
+      <div class="method-phase">
+        <span class="method-num">02 →</span>
+        <div>
+          <h3 style="font-size: 1.1rem;">Research & Define</h3>
+          <p class="method-desc">User analysis, buyer persona, needs mapping</p>
+        </div>
+      </div>
+      <div class="method-phase">
+        <span class="method-num">03 →</span>
+        <div>
+          <h3 style="font-size: 1.1rem;">Ideate & Prototype</h3>
+          <p class="method-desc">Structured brainstorming, rapid prototyping</p>
+        </div>
+      </div>
+      <div class="method-phase">
+        <span class="method-num">04 →</span>
+        <div>
+          <h3 style="font-size: 1.1rem;">Validate & Pitch</h3>
+          <p class="method-desc">Evidence-based validation, investor-ready pitch</p>
+        </div>
+      </div>
+    </div>
+    <div class="method-layers">
+      <div class="layer-card">
+        <div class="layer-label">Design Thinking Layer</div>
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.6rem;">Structured problem-solving framework</h3>
+        <p style="font-size: 14px;">Developed over three years across four countries. Buyer persona templates, COCD Box ideation, rapid prototyping methods, and validation playbooks. Guided step-by-step with proprietary materials at every stage.</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-label">AI Acceleration Layer</div>
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.6rem;">Technology as multiplier, not replacement</h3>
+        <p style="font-size: 14px;">At each stage, AI tools amplify speed and output quality. Research with Perplexity, prototype with v0 and Cursor, validate with AI-generated landing pages, prepare pitches with AI-assisted storytelling. Human judgment guides every output.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME FORMATS -->
+<section>
+  <div class="section-label"><span class="num">05</span> — Programme Formats</div>
+  <h2>Choose your <em>intensity.</em></h2>
+  <div class="formats-grid">
+    <div class="format-card">
+      <div class="format-duration">1 day · 4 h session</div>
+      <h3>Flash Day</h3>
+      <p style="font-size: 14px; color: var(--muted);">Maximum concentration. A single intensive session covering the essentials — problem framing, ideation, and AI tools in action. Ideal for hubs that want a high-impact taster with immediate takeaways.</p>
+    </div>
+    <div class="format-card featured">
+      <div class="format-rec">Most popular</div>
+      <div class="format-duration">3 days · 2 h/day · 6 hours total</div>
+      <h3>Intensive Sprint</h3>
+      <p style="font-size: 14px;">The right balance of depth and pace. Day 1: understand the problem and the user. Day 2: generate, prioritise, and prototype. Day 3: validate, pitch, and ship. Fast, structured, memorable.</p>
+    </div>
+    <div class="format-card">
+      <div class="format-duration">6 days · 2 h/day · 12 hours total</div>
+      <h3>Full Programme</h3>
+      <p style="font-size: 14px; color: var(--muted);">Complete transformation. Six sessions covering every phase from discovery to investor pitch — with breathing room between sessions for teams to apply, iterate, and come back with real progress.</p>
+    </div>
+  </div>
+  <p style="margin-top: 2rem; font-size: 14px; color: var(--muted); max-width: 680px;">Every format is fully adaptable. If your hub needs a different combination — more AI, more Design Thinking, a custom module, or a hybrid across formats — we'll shape it together. Nothing is fixed until it fits your community.</p>
+</section>
+
+<!-- AVAILABILITY -->
+<section>
+  <div class="section-label"><span class="num">07</span> — Availability</div>
+  <h2>We're in Seoul until <em>April 17.</em></h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 2rem;" class="two-col-grid">
+    <div style="padding: 2.5rem 2rem; background: var(--off-white);">
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.75rem;">Window</div>
+      <h3 style="margin-bottom: 0.75rem;">Late March → April 17</h3>
+      <p style="font-size: 14px;">We're available from now until April 17th. Sessions can be scheduled across the full window — consecutive days for sprints, or spread across weeks for the full programme. We fit your calendar, not the other way around.</p>
+    </div>
+    <div style="padding: 2.5rem 2rem; background: var(--off-white);">
+      <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.75rem;">After Seoul</div>
+      <h3 style="margin-bottom: 0.75rem;">Remote continuity available</h3>
+      <p style="font-size: 14px;">Post-departure follow-up, 1:1 mentoring, and async support can continue remotely. Programmes don't have to end when we board the flight.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section>
+  <div class="section-label"><span class="num">08</span> — Who Trusts Us</div>
+  <h2>Validated across <em>four countries.</em></h2>
+  <div class="partners-cols">
+    <div class="partner-group">
+      <h4>Partners & Academic</h4>
+      <ul class="partner-list">
+        <li>Mondragon Team Academy</li>
+        <li>Rivia Education Holding</li>
+        <li>Mondragon Unibertsitatea</li>
+      </ul>
+    </div>
+    <div class="partner-group">
+      <h4>Clients — Spain</h4>
+      <ul class="partner-list">
+        <li>Cuadrabus</li>
+        <li>Meliá Hotels International</li>
+        <li>Licores Barañano</li>
+        <li>Artomaña Txakolina</li>
+        <li>MMC Pulidos</li>
+        <li>NotePierdasEnLasRedes</li>
+        <li>Football Society</li>
+        <li>Gráficas Amurrio</li>
+        <li>Amurrioko Enpresak</li>
+        <li>Artxandako Trueba Ikastetxea</li>
+        <li>Politeknika Txorierri</li>
+      </ul>
+    </div>
+    <div class="partner-group">
+      <h4>Clients — International</h4>
+      <ul class="partner-list">
+        <li>Pune Institute of Business Management</li>
+        <li>Dock 72 — Brooklyn Navy Yard</li>
+        <li>Kirloskar Institute of Management</li>
+        <li>Atelier Gardens — Berlin</li>
+        <li>AIAIMS</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="section-full cta-section" id="cta">
+  <div class="section-full-inner" style="text-align: center;">
+    <div class="section-label" style="justify-content: center; color: rgba(245,243,238,0.4);"><span style="color: var(--accent);">→</span> Ready</div>
+    <h2>Ready to build something <em>extraordinary?</em></h2>
+    <p style="max-width: 500px; margin: 0 auto 2.5rem; font-size: 18px;">Let's design the right programme for your hub. Reach out and we'll shape this together.</p>
+    <a href="mailto:iapymeconsultores&#64;gmail.com?subject=Programme%20Proposal%20%E2%80%94%20IApyme%20%C3%97%20Make%20Your%20Way&body=Hello%2C%0A%0AWe%27re%20interested%20in%20discussing%20the%20programme%20for%20our%20hub.%0A%0AHub%20name%3A%20%0ACohort%20size%3A%20%0AKey%20interests%3A%20" class="btn-primary" style="font-size: 12px; padding: 1rem 2.5rem; display: inline-block;">Get in touch →</a>
+    <div class="cta-email" style="margin-top: 2rem;">iapymeconsultores&#64;gmail.com &nbsp;·&nbsp; info&#64;makeyourway.es</div>
+  </div>
+</div>
+
+<footer>
+  <p>IApyme Consultores × Make Your Way — Seoul, 2026</p>
+  <p>Powered by Rivia Education Holding &amp; Mondragon University</p>
+</footer>
+
+</body>
+</html>
